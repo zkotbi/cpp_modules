@@ -6,7 +6,7 @@
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 10:34:53 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/05/01 12:42:27 by zkotbi           ###   ########.fr       */
+/*   Updated: 2024/05/01 14:45:40 by zkotbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void print_upp(char **argv)
 		j = 0;
 		while (argv[i][j] != 0)
 		{
-			if (argv[i][j] >= 'a' && argv[i][j] <= 'z')
+			if (argv[i][j] >= 'a' && argv[i][j] <= 'z') 
 				argv[i][j] -= 32;
 			std::cout << argv[i][j];
 			j++;
