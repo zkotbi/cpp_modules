@@ -6,16 +6,13 @@
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 15:07:58 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/05/02 20:37:24 by zkotbi           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:24:36 by zkotbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
 #include <string>
-#include <stdio.h>
 #include <istream>
-
 
 void cmd_handle(std::string cmd, PhoneBook *phonebook)
 {
@@ -32,6 +29,7 @@ std::basic_istream<char> &readline(std::string &str)
 	std::cout << "> ";
 	return (std::getline(std::cin, str));
 }
+
 void prompt()
 {
 	PhoneBook		phonebook;
