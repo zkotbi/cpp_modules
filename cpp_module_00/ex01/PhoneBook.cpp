@@ -6,13 +6,12 @@
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:08:47 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/05/03 10:55:34 by zkotbi           ###   ########.fr       */
+/*   Updated: 2024/05/13 14:24:17 by zkotbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
-#include <cstdio>
 #include <iostream>
 #include <string>
 #include <strings.h>
@@ -31,7 +30,8 @@ int read_index()
 	std::string tmp;
 	while (1)
 	{
-		getline(std::cin, tmp);
+		if (!getline(std::cin, tmp))
+			exit (0);
 		if (is_index_valid(tmp) == 1)
 			break ;
 		std::cout << "Invalid index\n";
@@ -43,8 +43,10 @@ int read_index()
 void add_prompt(std::string str, std::string *var)
 {
 	std::cout << str;
-	while (std::getline(std::cin, *var))
+	while (1) 
 	{
+		if (!std::getline(std::cin, *var))
+			exit (0);
 		if (var->size() != 0)
 			break ;
 		std::cout << str;
@@ -61,43 +63,8 @@ void PhoneBook::add()
 	add_prompt("  nickname:          ", &contact[it].nickname);
 	add_prompt("  phone number:      ", &contact[it].phone_number);
 	add_prompt("  darkest secret:    ", &contact[it].darkest_secret);
-	// while (1)
-	// {
-	// 	std::cout << "	first name:    ";
-	// 	std::getline(std::cin, contact[it].first_name);
-	// 	if (contact[it].first_name.size() != 0)
-	// 		break ;
-	// }
-	// while (1)
-	// {
-	// 	std::cout << "	last name:     ";
-	// 	std::getline(std::cin, contact[it].last_name);
-	// 	if (contact[it].last_name.size() != 0)
-	// 		break ;
-	// }
-	// while (1)
-	// {
-	// 	std::cout << "	nickname:      ";
-	// 	std::getline(std::cin, contact[it].nickname);
-	// 	if (contact[it].nickname.size() != 0)
-	// 		break ;
-	// }
-	// while (1)
-	// {
-	// 	std::cout << "	phone_number:  ";
-	// 	std::getline(std::cin, contact[it].phone_number);
-	// 	if (contact[it].phone_number.size() != 0)
-	// 		break ;
-	// }
-	// while (1)
-	// {
-	// 	std::cout << "	darkest secret: ";
-	// 	std::getline(std::cin, contact[it].darkest_secret);
-	// 	if (contact[it].darkest_secret.size() != 0)
-	// 		break ;
-	// }
 	it++;
-	if (size < 7)
+	if (size <= 7)
 		size++;
 }
 
@@ -105,7 +72,7 @@ void PhoneBook::display_contact()
 {
 	int i = 0;
 
-	while (i <= size)
+	while (i < size)
 	{
 		contact[i].contacts_disp();
 		i++;
