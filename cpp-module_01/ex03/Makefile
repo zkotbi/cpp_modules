@@ -5,28 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/01 10:36:08 by zkotbi            #+#    #+#              #
-#    Updated: 2024/05/13 15:20:03 by zkotbi           ###   ########.fr        #
+#    Created: 2024/05/13 17:47:21 by zkotbi            #+#    #+#              #
+#    Updated: 2024/05/14 15:01:41 by zkotbi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+
+NAME = prog
 
 SRC = main.cpp\
-	  Contact.cpp\
-	  PhoneBook.cpp
+	  HumanA.cpp\
+	  HumanB.cpp\
+	  Weapon.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 
-CFLAG = -Wall -Wextra -Werror -fsanitize=address
+CFLAG = -Wall -Wextra -Werror -fsanitize=address -g3
 
 all: $(NAME)
 
 $(NAME) : $(OBJ) 
 	c++ $(CFLAG) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Contact.hpp PhoneBook.hpp
+%.o: %.cpp HumanA.hpp HumanB.hpp Weapon.hpp
 	c++  -c $(CFLAG) $< -o $@
 
 clean: 

@@ -5,28 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/01 10:36:08 by zkotbi            #+#    #+#              #
-#    Updated: 2024/05/13 15:20:03 by zkotbi           ###   ########.fr        #
+#    Created: 2024/05/15 18:51:34 by zkotbi            #+#    #+#              #
+#    Updated: 2024/05/16 18:59:41 by zkotbi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = harlFilter
 
 SRC = main.cpp\
-	  Contact.cpp\
-	  PhoneBook.cpp
+	  Harl.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 
-CFLAG = -Wall -Wextra -Werror -fsanitize=address
+CFLAG = -std=c++98 -Wall -Wextra -Werror -fsanitize=address -g3
 
 all: $(NAME)
 
 $(NAME) : $(OBJ) 
 	c++ $(CFLAG) $(OBJ) -o $(NAME)
 
-%.o: %.cpp Contact.hpp PhoneBook.hpp
+%.o: %.cpp Harl.hpp
 	c++  -c $(CFLAG) $< -o $@
 
 clean: 
