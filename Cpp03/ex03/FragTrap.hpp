@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 15:06:29 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/06/10 11:38:59 by zkotbi           ###   ########.fr       */
+/*   Created: 2024/06/08 18:01:31 by zkotbi            #+#    #+#             */
+/*   Updated: 2024/06/10 20:51:56 by zkotbi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
-
-class ScavTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
 	public :
-		ScavTrap();
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap& to_copy);
-		~ScavTrap();
-		void guardGate();
+		FragTrap();
+		FragTrap(std::string name);
+		FragTrap(const FragTrap& to_copy);
+		~FragTrap();
 		void attack(const std::string& target);
+		void highFivesGuys(void);
+		static const int HitPointDefault = 100;
+		static const int EnergiyDefault = 100;
+		static const int damageDefault = 30;
 };
+
 #endif
