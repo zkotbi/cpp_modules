@@ -6,7 +6,7 @@
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 10:21:22 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/08/03 16:08:26 by zkotbi           ###   ########.fr       */
+/*   Updated: 2024/09/20 04:30:32 by macbook          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main()
 {
 	// Bureaucrat::GradeLowException
 	try {
-		Bureaucrat obj("x", 151);
+		Bureaucrat obj;
 	}
 	catch (std::exception& e)
 	{

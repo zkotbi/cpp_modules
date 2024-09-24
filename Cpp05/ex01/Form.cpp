@@ -6,7 +6,7 @@
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 09:19:36 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/08/04 09:29:43 by zkotbi           ###   ########.fr       */
+/*   Updated: 2024/09/20 04:40:01 by macbook          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 
 
-Form::Form() : signGrade(0), execGrade(0)
+Form::Form() : signGrade(0), execGrade(0),isSigned(0)
 {
 	if (signGrade > 150 || execGrade > 150)
 		throw GradeTooLowException();

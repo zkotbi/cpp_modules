@@ -6,7 +6,7 @@
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 09:41:37 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/08/03 15:15:57 by zkotbi           ###   ########.fr       */
+/*   Updated: 2024/09/20 04:25:02 by macbook          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ class Bureaucrat
 		~Bureaucrat();
 
 		Bureaucrat(std::string name, int grade);
+
 		const std::string&	getName() const;
 		int					getGrade() const;
+
 		void				incrGrade();
 		void				decrGrade();
 		class GradeTooHighException : public std::exception

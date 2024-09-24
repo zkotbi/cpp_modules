@@ -6,13 +6,13 @@
 /*   By: zkotbi <zkotbi@1337.ma>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 09:41:40 by zkotbi            #+#    #+#             */
-/*   Updated: 2024/08/04 08:51:47 by zkotbi           ###   ########.fr       */
+/*   Updated: 2024/09/20 04:31:39 by macbook          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("garbage name") {
+Bureaucrat::Bureaucrat() : name("garbage name"), grade(1) {
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& toCopy) : name(toCopy.getName()), grade(toCopy.getGrade()) {
@@ -53,7 +53,7 @@ int			Bureaucrat::getGrade() const
 
 void		Bureaucrat::incrGrade()
 {
-	if (grade == 1)
+	if (grade <= 1)
 		throw GradeTooHighException();
 	else 
 		grade--;
@@ -61,7 +61,7 @@ void		Bureaucrat::incrGrade()
 
 void		Bureaucrat::decrGrade()
 {
-	if (grade == 150)
+	if (grade >= 150)
 		throw GradeTooLowException();
 	else 
 		grade++;
