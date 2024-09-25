@@ -4,6 +4,7 @@
 #include <climits>
 #include <cmath>
 #include <ostream>
+#include <string>
 #include <strstream>
 #include <sstream>
 
@@ -20,16 +21,12 @@ static void pseudoLiterals(std::string str)
 {
 	std::cout << "char: Impossible" << std::endl;
 	std::cout << "int: Impossible" << std::endl;
-	if (str[str.size() -1] != 'f')
-	{
-		std::cout << "float: " << str << "f" << std::endl;
-		std::cout << "double: " << str << std::endl;
-	}
-	else
-	{
-		std::cout << "float: " << str << std::endl;
-		std::cout << "double: " << str.substr(0, str.size() -1) << std::endl;
-	}
+	if (str == "nan" || str == "nanf")
+		std::cout << "float: nanf\ndouble: nan\n";
+	if (str == "-inff" || str == "-inf")
+		std::cout << "float: -inff\ndouble: -inf\n";
+	if (str == "+inff" || str == "+inf")
+		std::cout << "float: +inff\ndouble: +inf\n";
 }
 
 
@@ -47,11 +44,11 @@ static char isNum(const std::string& str)
 		ss.str(str.substr(0, str.size() -1));
 	else
 		ss.str(str);
-	if (ss >> dNum && ss.eof())
+	if (ss >> dNum && ss.eof() && str[0] != '.' && str.find('.') != std::string::npos)
 	{
-		if (str[str.size() -1] == 'f')
+		if (str[str.size() -1] == 'f' && static_cast<float>(dNum) != INFINITY)
 			return ('f');
-		else
+		else if (str[str.size() -1] != 'f')
 			return ('d');
 	}
 	return (-1); 
@@ -88,14 +85,22 @@ static void intHandler(std::string str)
 	else
 		std::cout << "char: \'" << static_cast<char>(num) << "\'" << std::endl;
 	std::cout << "int: " << num << std::endl;
-	std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(num) <<  std::endl;
+	if (num < 1000000 && num > -1000000)
+	{
+		std::cout << "float: " << static_cast<float>(num) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(num) << ".0" <<  std::endl;
+	}
+	else 
+	{
+		std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(num) <<  std::endl;
+	}
 }
 
 static void floatHandler(std::string str)
 {
 	std::stringstream ss(str.substr(0, str.size() -1));
-	float fNum;
+	double fNum;
 	ss >> fNum;
 
 	if (fNum > 127 || fNum < -128)
@@ -110,8 +115,16 @@ static void floatHandler(std::string str)
 	else 
 		std::cout << "int: " << static_cast<int>(fNum) << std::endl;
 
-	std::cout << "float: " << fNum << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(fNum) << std::endl;
+	if (fNum < 1000000 && fNum > -1000000 && fNum == static_cast<int>(fNum))
+	{
+		std::cout << "float: " << static_cast<float>(fNum) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(fNum)  << ".0" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << static_cast<float>(fNum) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(fNum) << std::endl;
+	}
 }
 
 static void doubleHandler(std::string str)
@@ -132,11 +145,16 @@ static void doubleHandler(std::string str)
 	else 
 		std::cout << "int: " << static_cast<int>(dNum) << std::endl;
 
-	if (dNum > FLT_MAX || dNum < FLT_MIN)
-		std::cout << "float: Impossible" << std::endl;
+	if (dNum < 1000000 && dNum > -1000000 && dNum == static_cast<int>(dNum))
+	{
+		std::cout << "float: " << static_cast<float>(dNum) << ".0f" << std::endl;
+		std::cout << "double: " << dNum << ".0" << std::endl;
+	}
 	else
+	{
 		std::cout << "float: " << static_cast<float>(dNum) << "f" << std::endl;
-	std::cout << "double: " << dNum << std::endl;
+		std::cout << "double: " << dNum << std::endl;
+	}
 }
 
 void ScalarConverter::convert(const std::string& str)
@@ -144,8 +162,6 @@ void ScalarConverter::convert(const std::string& str)
 	char type = isLiteral(str);
 	if (type == -1)
 		std::cout << "Invalid Literal" << std::endl;
-	// else if (type != 0)
-	// 	std::cout << "type is: " << type << std::endl;
 	if (type == 'c')
 		charHandler(str);
 	else if (type == 'i')
