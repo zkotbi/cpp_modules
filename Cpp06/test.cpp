@@ -39,8 +39,24 @@
 //   return 0;
 // }
 
+class a {
+	public:
+		a() {std::cout << "hello AAAAAAAAAAAAAAAAA" << std::endl;}
+		void funcA() {std::cout << "class \'A\'" << std::endl;}
+};
+class b {
+	public:
+		b() {std::cout << "hello BBBBBBBBBBBBBBBBBB" << std::endl;}
+		void funcB() {std::cout << "class \'B\'" << std::endl;}
+};
+
 int main()
 {
+	a *A = new a();
+	b *B = reinterpret_cast<b *>(A);
+
+	B->funcB();
+
 	// std::cout <<  static_cast<char>(-90) << std::endl;
 	// double d;
 	// std::stringstream ss(".2.2...1");
