@@ -1,6 +1,7 @@
 #include "Data.hpp"
 #include "Serializer.hpp"
 #include <cstdint>
+#include <ios>
 #include <iostream>
 
 int main()
@@ -13,5 +14,8 @@ int main()
 	std::cout << "address: "<< ptr << std::endl;
 	Data *data1 = Serializer::deserialize(ptr);
 	std::cout << "address: "<< data1 << std::endl;
-	std::cout << "char: "<< data1->c << "\nnum: " << data1->num << "\nbool: "<< data1->b << "\nlong: "<< data1->l<< std::endl;
+	std::cout << "char: "<< data1->c << "\nnum:` " << data1->num << "\nbool: "<< data1->b << "\nlong: "<< data1->l<< std::endl;
+	Data data2 = *Serializer::deserialize(ptr);
+	std::cout << "address: "<< &data2 << std::endl;
+	std::cout << "char: "<< data2.c << "\nnum:` " << data2.num << "\nbool: "<< data2.b << "\nlong: "<< data2.l<< std::endl;
 }
