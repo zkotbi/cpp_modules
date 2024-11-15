@@ -1,6 +1,7 @@
-NAME = easyfind
+NAME = span
 
-SRC = main.cpp
+SRC = main.cpp \
+	  Span.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -12,7 +13,7 @@ all: $(NAME)
 $(NAME) : $(OBJ) 
 	 c++ $(CFLAG) $(OBJ) -o $(NAME)
 
-%.o: %.cpp easyfind.hpp
+%.o: %.cpp Span.hpp
 	 c++  -c $(CFLAG) $< -o $@
 
 clean: 
