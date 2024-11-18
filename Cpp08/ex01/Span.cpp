@@ -19,6 +19,7 @@ Span::Span(unsigned int max) : N(max) {
 Span& Span::operator=(const Span& other)
 {
 	this->N = other.N;
+	this->numbers.clear();
 	this->numbers = other.numbers;
 	return (*this);
 }
