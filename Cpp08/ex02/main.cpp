@@ -1,18 +1,19 @@
 #include "MutantStack.hpp"
 #include <iostream>
 #include <list>
+#include <vector>
 
 
 int main()
 {
-	MutantStack<int>	newStack;
+	MutantStack<int, std::list<int> >	newStack;
 
 	newStack.push(12);
 	newStack.push(-90);
 	newStack.push(87);
 	newStack.push(3);
 	newStack.push(-1);
-	for (MutantStack<int>::iterator it = newStack.begin(); it != newStack.end(); it++)
+	for (MutantStack<int, std::list<int> >::iterator it = newStack.begin(); it != newStack.end(); it++)
 	{
 		std::cout << *it << std::endl;
 	}
@@ -22,7 +23,7 @@ int main()
 	// newStack.pop();
 	// newStack.pop();
 	// newStack.pop();
-	for (MutantStack<int>::reverse_iterator it = newStack.rbegin(); it != newStack.rend(); it++)
+	for (MutantStack<int, std::list<int> >::reverse_iterator it = newStack.rbegin(); it != newStack.rend(); it++)
 	{
 		std::cout << *it << std::endl;
 	}
